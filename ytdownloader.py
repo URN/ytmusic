@@ -47,8 +47,8 @@ class YTDownloader:
         Download the video.
         """
         
-        path = f"{data['title']} - {data['artists'][0]['name']}.mp4"
-        path2 = f"{data['title']} - {data['artists'][0]['name']}.mp3"
+        path = f"/intermediate/{data['title']} - {data['artists'][0]['name']}.mp4"
+        path2 = f"/out/{data['title']} - {data['artists'][0]['name']}.mp3"
 
         ydl_opts = {
             'format': 'bestaudio/best',
