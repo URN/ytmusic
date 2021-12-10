@@ -1,6 +1,7 @@
 from mutagen.easyid3 import EasyID3
 import youtube_dl
 import os
+import subprocess
 import time
 import threading
 
@@ -60,7 +61,7 @@ class YTDownloader:
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([f"https://youtu.be/{data['videoId']}"])
                 # convert to mp3
-                os.system(f"ffmpeg -i \"{path}\" -codec:a libmp3lame -qscale:a 2 \"{path2}\"")
+                subprocess.Popen(["ffmpeg", "-i", path, "-codec:a", "libmp3lame", "-qascale:a", "2", path2])
                 # Add Metadata
                 audio = EasyID3(path2)
                 audio['title'] = data['title']
